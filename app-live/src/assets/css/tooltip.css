@@ -1,0 +1,15 @@
+.tooltip-container{
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    visibility: hidden;
+}
+
+.tooltip-container:hover .tooltip{
+    visibility: visible;
+}

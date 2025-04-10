@@ -1,0 +1,179 @@
+/* Global CSS Reset */
+
+/* Remove all margins, paddings, and borders */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/* Set default font settings */
+body,
+html {
+    height: 100%;
+    font-family: sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove default list styles */
+ul,
+ol {
+    list-style: none;
+}
+
+/* Remove default link styles */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Reset table styles */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Reset form element styles */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    appearance: none;
+}
+
+/* Reset image styles */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Reset blockquote styles */
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+    content: '';
+    content: none;
+}
+
+/* Reset figure styles */
+figure {
+    margin: 0;
+}
+
+/* Reset heading styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    font-weight: normal;
+}
+
+/* Reset button styles */
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Reset fieldset and legend styles */
+fieldset {
+    border: none;
+    padding: 0;
+}
+
+legend {
+    padding: 0;
+}
+
+/* Reset iframe styles */
+iframe {
+    border: none;
+}
+
+/* Reset hr styles */
+hr {
+    border: none;
+    height: 1px;
+    background: #ccc;
+}
+
+/* Reset code and pre styles */
+code,
+pre {
+    font-family: monospace, monospace;
+    font-size: 1em;
+}
+
+/* Reset address styles */
+address {
+    font-style: normal;
+}
+
+/* Reset audio and video styles */
+audio,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+/* Reset canvas styles */
+canvas {
+    display: block;
+}
+
+/* Reset svg styles */
+svg {
+    fill: currentColor;
+    display: block;
+}
+
+/* Reset details and summary styles */
+details {
+    display: block;
+}
+
+summary {
+    display: list-item;
+}
+
+/* Reset progress styles */
+progress {
+    display: inline-block;
+}
+
+/* Reset meter styles */
+meter {
+    display: inline-block;
+}
+
+/* Reset template styles */
+template {
+    display: none;
+}
+
+/* Reset hidden attribute */
+[hidden] {
+    display: none;
+}

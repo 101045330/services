@@ -1,0 +1,22 @@
+/* Accessibility: Reduce motion for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Accessibility: High contrast mode */
+@media (prefers-contrast: high) {
+    body {
+        background-color: black;
+        color: white;
+    }
+
+    .box {
+        background-color: black;
+        border-color: white;
+    }
+}
+
+/*GO TO TOP*/
