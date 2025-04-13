@@ -1,0 +1,35 @@
+.container-lg {
+  perspective: 1000px; /* Adjust value for desired 3D depth */
+}
+
+.box-shadow {
+  transform-style: preserve-3d; /* Enable 3D transformations on children */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.box-shadow:hover {
+  transform: rotateY(10deg) translateZ(20px); /* Rotate and move forward on hover */
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+.card {
+  transform-style: preserve-3d; /* Ensure inner elements also respect 3D */
+}
+
+.card-header,
+.card-body {
+  transform: translateZ(1px); /* Prevent clipping of inner content during 3D transform */
+}
+
+.img-fluid {
+  /* Optional: Add a slight translateZ to lift the image a bit */
+  transform: translateZ(5px);
+}
+
+.btn {
+  transform: translateZ(10px); /* Lift the button slightly */
+}
+
+.list-unstyled {
+  transform: translateZ(5px); /* Lift the price slightly */
+}
