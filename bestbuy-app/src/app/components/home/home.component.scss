@@ -1,0 +1,150 @@
+.container-lg {
+  perspective: 1200px; /* Increased perspective for more depth */
+  margin-top: 100px;
+  overflow-x: hidden; /* Prevent potential horizontal scrollbar from animations */
+}
+
+.row {
+  display: flex; /* Ensure proper spacing and alignment for child animations */
+  justify-content: center; /* Center the category blocks */
+}
+
+.box-shadow {
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1), box-shadow 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+  will-change: transform, box-shadow; /* Hint browser for optimization */
+  margin: 15px; /* Add some spacing between category blocks */
+}
+
+.box-shadow:hover {
+  transform: rotateX(10deg) rotateY(15deg) translateZ(30px); /* Dynamic rotation and translation */
+  box-shadow: 15px 20px 40px rgba(0, 0, 0, 0.35); /* Stronger shadow on hover */
+}
+
+.card {
+  transform-style: preserve-3d;
+  background-color: rgba(248, 249, 250, 0.95); /* Slightly less opaque background */
+}
+
+.card-header {
+  transform: translateZ(15px); /* Lift the header */
+  background-color: rgba(255, 255, 255, 0.8); /* More transparent header */
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.card-header h6 {
+  margin-bottom: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.card-body {
+  transform: translateZ(10px);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content within the body */
+}
+
+.img-fluid {
+  transform: translateZ(25px); /* Lift the image significantly */
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px; /* More pronounced border radius */
+  box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.2); /* More noticeable image shadow */
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  transform: translateZ(30px); /* Lift the button even more */
+  padding: 0.8rem 1.75rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  border-radius: 5px;
+  box-shadow: 5px 8px 15px rgba(0, 123, 255, 0.4); /* More prominent button shadow */
+}
+
+.list-unstyled {
+  transform: translateZ(20px); /* Lift the price list */
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.list-unstyled li {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Keyframe animation for a subtle continuous rotation on the card */
+@keyframes rotateCard {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) translateZ(0);
+  }
+  50% {
+    transform: rotateX(2deg) rotateY(3deg) translateZ(0);
+  }
+  100% {
+    transform: rotateX(0deg) rotateY(0deg) translateZ(0);
+  }
+}
+
+.card {
+  animation: rotateCard 5s ease-in-out infinite alternate; /* Apply subtle rotation */
+}
+
+/* Keyframe animation for a scaling effect on the image on hover */
+@keyframes scaleImageHover {
+  to {
+    transform: translateZ(30px) scale(1.05);
+  }
+}
+
+.box-shadow:hover .img-fluid {
+  animation: scaleImageHover 0.3s ease-out forwards;
+}
+
+/* Keyframe animation for a slight bounce on the button on hover */
+@keyframes bounceButtonHover {
+  0% {
+    transform: translateZ(30px) translateY(0);
+  }
+  50% {
+    transform: translateZ(30px) translateY(-5px);
+  }
+  100% {
+    transform: translateZ(30px) translateY(0);
+  }
+}
+
+.box-shadow:hover .btn {
+  animation: bounceButtonHover 0.2s ease-out forwards;
+}
+
+/* Initial load animation for the category blocks */
+@keyframes fadeInSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) translateZ(-150px) rotateX(-10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateZ(0) rotateX(0deg);
+  }
+}
+
+.box-shadow {
+  animation: fadeInSlideUp 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  opacity: 0;
+}
+
+/* Stagger the load animation */
+.row > div:nth-child(1) .box-shadow {
+  animation-delay: 0.2s;
+}
+.row > div:nth-child(2) .box-shadow {
+  animation-delay: 0.4s;
+}
+.row > div:nth-child(3) .box-shadow {
+  animation-delay: 0.6s;
+}
