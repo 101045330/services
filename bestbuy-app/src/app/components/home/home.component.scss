@@ -1,150 +1,202 @@
 .container-lg {
-  perspective: 1200px; /* Increased perspective for more depth */
+  perspective: 1500px;
   margin-top: 100px;
-  overflow-x: hidden; /* Prevent potential horizontal scrollbar from animations */
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+  transform: translateZ(30px);
+  opacity: 0;
+  animation: fadeInSlashUpTitle 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.2s;
+}
+
+@keyframes fadeInSlashUpTitle {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) translateZ(-80px) rotateZ(-10deg) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateZ(30px) rotateZ(0deg) scale(1);
+  }
 }
 
 .row {
-  display: flex; /* Ensure proper spacing and alignment for child animations */
-  justify-content: center; /* Center the category blocks */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .box-shadow {
   transform-style: preserve-3d;
-  transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1), box-shadow 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
-  will-change: transform, box-shadow; /* Hint browser for optimization */
-  margin: 15px; /* Add some spacing between category blocks */
+  transition: transform 0.8s cubic-bezier(0.39, 0.575, 0.565, 1), box-shadow 0.8s cubic-bezier(0.39, 0.575, 0.565, 1);
+  will-change: transform, box-shadow;
+  margin: 25px;
+  width: calc(33.33% - 50px);
+  max-width: 450px;
+}
+
+@media (max-width: 991.98px) {
+  .box-shadow {
+    width: calc(50% - 50px);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .box-shadow {
+    width: calc(100% - 50px);
+  }
 }
 
 .box-shadow:hover {
-  transform: rotateX(10deg) rotateY(15deg) translateZ(30px); /* Dynamic rotation and translation */
-  box-shadow: 15px 20px 40px rgba(0, 0, 0, 0.35); /* Stronger shadow on hover */
+  transform: rotateX(15deg) rotateY(25deg) translateZ(50px) scale(1.05) skew(-5deg, 5deg); /* More slashy hover */
+  box-shadow: 25px 30px 60px rgba(0, 0, 0, 0.45);
 }
 
 .card {
   transform-style: preserve-3d;
-  background-color: rgba(248, 249, 250, 0.95); /* Slightly less opaque background */
+  background-color: rgba(253, 253, 253, 0.98);
+  border-width: 2px;
+  overflow: hidden; /* Clip the slashy border effect */
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #00ff00, #ff00ff);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+  animation: slashBorder 4s infinite linear;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+@keyframes slashBorder {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
 }
 
 .card-header {
-  transform: translateZ(15px); /* Lift the header */
-  background-color: rgba(255, 255, 255, 0.8); /* More transparent header */
-  padding: 1rem 1.25rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  transform: translateZ(25px);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1.5rem 1.75rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.18);
 }
 
 .card-header h6 {
   margin-bottom: 0;
-  font-size: 1.2rem;
-  color: #333;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #222;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .card-body {
-  transform: translateZ(10px);
-  padding: 1.5rem;
+  transform: translateZ(20px);
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center content within the body */
+  align-items: center;
 }
 
 .img-fluid {
-  transform: translateZ(25px); /* Lift the image significantly */
+  transform: translateZ(35px);
   max-width: 100%;
   height: auto;
-  border-radius: 10px; /* More pronounced border radius */
-  box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.2); /* More noticeable image shadow */
-  margin-bottom: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 8px 12px 30px rgba(0, 0, 0, 0.3);
+  margin-bottom: 2.5rem;
+  transition: transform 0.4s ease-in-out;
+}
+
+.box-shadow:hover .img-fluid {
+  transform: translateZ(40px) scale(1.08) rotateZ(-5deg); /* Slashy image hover */
 }
 
 .btn {
-  transform: translateZ(30px); /* Lift the button even more */
-  padding: 0.8rem 1.75rem;
-  font-size: 1.15rem;
-  font-weight: 600;
-  border-radius: 5px;
-  box-shadow: 5px 8px 15px rgba(0, 123, 255, 0.4); /* More prominent button shadow */
+  transform: translateZ(40px);
+  padding: 1.2rem 2.5rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 8px 12px 25px rgba(0, 123, 255, 0.6);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.btn:hover {
+  transform: translateZ(45px) scale(1.05) rotateZ(5deg); /* Slashy button hover */
+  box-shadow: 10px 15px 30px rgba(0, 123, 255, 0.7);
 }
 
 .list-unstyled {
-  transform: translateZ(20px); /* Lift the price list */
-  margin-top: 1rem;
+  transform: translateZ(30px);
+  margin-top: 2rem;
   text-align: center;
 }
 
 .list-unstyled li {
-  font-size: 1rem;
-  color: #555;
+  font-size: 1.2rem;
+  color: #444;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
 }
 
-/* Keyframe animation for a subtle continuous rotation on the card */
-@keyframes rotateCard {
+/* More pronounced continuous rotation with a slight tilt */
+@keyframes rotateCardSlash {
   0% {
-    transform: rotateX(0deg) rotateY(0deg) translateZ(0);
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateZ(0);
   }
   50% {
-    transform: rotateX(2deg) rotateY(3deg) translateZ(0);
+    transform: rotateX(2deg) rotateY(3deg) rotateZ(1deg) translateZ(5px);
   }
   100% {
-    transform: rotateX(0deg) rotateY(0deg) translateZ(0);
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateZ(0);
   }
 }
 
 .card {
-  animation: rotateCard 5s ease-in-out infinite alternate; /* Apply subtle rotation */
+  animation: rotateCardSlash 7s ease-in-out infinite alternate;
 }
 
-/* Keyframe animation for a scaling effect on the image on hover */
-@keyframes scaleImageHover {
-  to {
-    transform: translateZ(30px) scale(1.05);
-  }
-}
-
-.box-shadow:hover .img-fluid {
-  animation: scaleImageHover 0.3s ease-out forwards;
-}
-
-/* Keyframe animation for a slight bounce on the button on hover */
-@keyframes bounceButtonHover {
-  0% {
-    transform: translateZ(30px) translateY(0);
-  }
-  50% {
-    transform: translateZ(30px) translateY(-5px);
-  }
-  100% {
-    transform: translateZ(30px) translateY(0);
-  }
-}
-
-.box-shadow:hover .btn {
-  animation: bounceButtonHover 0.2s ease-out forwards;
-}
-
-/* Initial load animation for the category blocks */
-@keyframes fadeInSlideUp {
+/* Initial load animation with a stronger "slash" effect */
+@keyframes fadeInSlashUpHeavy {
   0% {
     opacity: 0;
-    transform: translateY(30px) translateZ(-150px) rotateX(-10deg);
+    transform: translateY(60px) translateZ(-250px) rotateY(-20deg) rotateZ(15deg) scale(0.85);
   }
   100% {
     opacity: 1;
-    transform: translateY(0) translateZ(0) rotateX(0deg);
+    transform: translateY(0) translateZ(0) rotateY(0deg) rotateZ(0deg) scale(1);
   }
 }
 
 .box-shadow {
-  animation: fadeInSlideUp 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: fadeInSlashUpHeavy 0.9s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
   opacity: 0;
 }
 
 /* Stagger the load animation */
 .row > div:nth-child(1) .box-shadow {
-  animation-delay: 0.2s;
+  animation-delay: 0.3s;
 }
 .row > div:nth-child(2) .box-shadow {
-  animation-delay: 0.4s;
+  animation-delay: 0.5s;
 }
 .row > div:nth-child(3) .box-shadow {
-  animation-delay: 0.6s;
+  animation-delay: 0.7s;
 }
+/* Add more for additional product blocks if needed */
