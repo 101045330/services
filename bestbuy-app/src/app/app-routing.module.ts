@@ -6,10 +6,10 @@ import { ProductCategoriesComponent } from './components/product-categories/prod
 import { InteriorProductComponent } from './components/interior-product/interior-product.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'all-products', component: AllProductsComponent },
-  { path: 'product-categories/:category', component: ProductCategoriesComponent },
-  { path: 'interior-product/:id', component: InteriorProductComponent },
+  { path: '', component: HomeComponent }, //ok
+  { path: 'all-products', component: AllProductsComponent }, //ok
+  { path: 'product-categories/:category', component: ProductCategoriesComponent }, //??
+  { path: 'interior-product/:id', component: InteriorProductComponent },//ok
   { path: '**', redirectTo: '' } // Redirect to home for any unknown route
 ];
 
