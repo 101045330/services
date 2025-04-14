@@ -5,6 +5,18 @@
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" [routerLink]="['/']">Home</a></li>
+      <li><a class="dropdown-item" [routerLink]="['/all-products']">All Products</a></li>
+      <li>
+        <select class="form-select" (change)="onCategoryChange($event)">
+          <option value="">Select a Category...</option>
+          <option value="TVs">TVs</option>
+          <option value="Computers">Computers</option>
+          <option value="Appliances">Appliances</option>
+        </select>
+      </li>
+    </ul>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
