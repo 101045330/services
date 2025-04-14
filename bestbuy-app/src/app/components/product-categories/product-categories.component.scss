@@ -1,0 +1,194 @@
+.container-lg {
+  perspective: 1500px; /* Even more pronounced perspective */
+  margin-top: 100px;
+  padding: 20px; /* Add some padding around the container */
+  overflow-x: hidden;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+  transform: translateZ(30px); /* Lift the category title */
+  opacity: 0;
+  animation: fadeInScaleUpTitle 0.6s ease-out forwards 0.2s; /* Animate title in */
+}
+
+@keyframes fadeInScaleUpTitle {
+  0% {
+    opacity: 0;
+    transform: translateZ(-50px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateZ(30px) scale(1);
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  justify-content: center; /* Center the product blocks */
+}
+
+.box-shadow {
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  will-change: transform, box-shadow;
+  margin: 20px; /* Increased margin for larger spacing */
+  width: calc(33.33% - 40px); /* Adjust width for three columns with margin */
+  max-width: 400px; /* Set a maximum width */
+}
+
+@media (max-width: 991.98px) { /* Medium screens */
+  .box-shadow {
+    width: calc(50% - 40px);
+  }
+}
+
+@media (max-width: 767.98px) { /* Small screens */
+  .box-shadow {
+    width: calc(100% - 40px);
+  }
+}
+
+.box-shadow:hover {
+  transform: rotateX(12deg) rotateY(20deg) translateZ(40px) scale(1.03); /* More intense 3D and slight scale up */
+  box-shadow: 20px 25px 50px rgba(0, 0, 0, 0.4); /* Deeper shadow on hover */
+}
+
+.card {
+  transform-style: preserve-3d;
+  background-color: rgba(250, 250, 250, 0.97);
+  border-width: 2px; /* Thicker border */
+}
+
+.card-header {
+  transform: translateZ(20px); /* Lift the header more */
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 1.25rem 1.5rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+}
+
+.card-header h6 {
+  margin-bottom: 0;
+  font-size: 1.4rem;
+  font-weight: 700; /* Bolder heading */
+  color: #222;
+}
+
+.card-body {
+  transform: translateZ(15px);
+  padding: 2rem; /* Larger padding */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.img-fluid {
+  transform: translateZ(30px); /* Even more lift for the image */
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px; /* More rounded corners */
+  box-shadow: 7px 10px 25px rgba(0, 0, 0, 0.25); /* More prominent image shadow */
+  margin-bottom: 2rem;
+}
+
+.btn {
+  transform: translateZ(35px); /* Highest lift for the button */
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 7px 10px 20px rgba(0, 123, 255, 0.5); /* Stronger button shadow */
+}
+
+.list-unstyled {
+  transform: translateZ(25px); /* Lift the price list */
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.list-unstyled li {
+  font-size: 1.1rem;
+  color: #444;
+}
+
+/* More pronounced continuous rotation on the card */
+@keyframes rotateCardHeavy {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) translateZ(0);
+  }
+  50% {
+    transform: rotateX(3deg) rotateY(5deg) translateZ(5px);
+  }
+  100% {
+    transform: rotateX(0deg) rotateY(0deg) translateZ(0);
+  }
+}
+
+.card {
+  animation: rotateCardHeavy 6s ease-in-out infinite alternate;
+}
+
+/* More significant scale up on image hover */
+@keyframes scaleImageHoverHeavy {
+  to {
+    transform: translateZ(35px) scale(1.08);
+  }
+}
+
+.box-shadow:hover .img-fluid {
+  animation: scaleImageHoverHeavy 0.4s ease-out forwards;
+}
+
+/* More noticeable bounce on button hover */
+@keyframes bounceButtonHoverHeavy {
+  0% {
+    transform: translateZ(35px) translateY(0);
+  }
+  50% {
+    transform: translateZ(35px) translateY(-8px);
+  }
+  100% {
+    transform: translateZ(35px) translateY(0);
+  }
+}
+
+.box-shadow:hover .btn {
+  animation: bounceButtonHoverHeavy 0.3s ease-out forwards;
+}
+
+/* Initial load animation with a more dramatic entrance */
+@keyframes fadeInScaleUpHeavy {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) translateZ(-200px) rotateY(-15deg) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateZ(0) rotateY(0deg) scale(1);
+  }
+}
+
+.box-shadow {
+  animation: fadeInScaleUpHeavy 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  opacity: 0;
+}
+
+/* Stagger the load animation */
+.row > div:nth-child(1) .box-shadow {
+  animation-delay: 0.3s;
+}
+.row > div:nth-child(2) .box-shadow {
+  animation-delay: 0.5s;
+}
+.row > div:nth-child(3) .box-shadow {
+  animation-delay: 0.7s;
+}
+.row > div:nth-child(4) .box-shadow {
+  animation-delay: 0.9s;
+}
+/* Add more for additional product blocks */
