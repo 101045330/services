@@ -16,7 +16,7 @@ export class ProductService {
       name: 'Bosch 30" 3.7 Cu. Ft. True Convection 5-Burner Stove',
       description: 'Experience the best of both worlds with the Bosch 800 Series gas range. This industrial-style range features a spacious 5-burner gas cooktop so you can whip up gourmet meals with precision. It\'s also equipped with a 3.7 cu. ft. true convection oven that keeps air flowing around your dishes so everything is cooked evenly and efficiently.',
       price: 3000,
-      photo: 'assets/img/stove.jpeg',
+      photo: 'stove.jpeg',
       category: 'Appliances'
     },
     {
