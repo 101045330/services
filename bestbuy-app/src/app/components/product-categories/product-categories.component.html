@@ -7,7 +7,7 @@
             <h6 class="my-0 font-weight-normal">{{ product.name }}</h6>
           </div>
           <div class="card-body">
-            <img class="img-fluid mb-4" src="{{product.photo}}" alt="{{ product.name }}" onerror="this.onerror=null; this.src='assets/img/default-image.jpeg';">
+            <img class="img-fluid mb-4" src="assets/img/{{product.photo}}" alt="{{ product.name }}" onerror="this.onerror=null; this.src='assets/img/default-image.jpeg';">
             <button type="button" class="btn btn-lg btn-block btn-outline-primary" [routerLink]="['/interior-product', product.id]">View</button>
             <ul class="list-unstyled mt-3 mb-4">
               <li>Price: {{product.price | currency}}</li>
