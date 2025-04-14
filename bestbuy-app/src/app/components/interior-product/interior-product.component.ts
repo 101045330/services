@@ -21,4 +21,11 @@ export class InteriorProductComponent implements OnInit {
       this.product = this.productService.mgLookupProduct(productId);
     });
   }
+
+  handleImageError(event: Event): void {
+    const imgElement = event.target as HTMLImageElement;
+    imgElement.onerror = null; // Prevents looping
+    imgElement.src = 'assets/img/default-image.jpeg'; // Path to your default image
+  }
+
 }
