@@ -1,0 +1,202 @@
+.container-lg {
+    perspective: 1500px;
+    margin-top: 100px;
+    padding: 20px;
+    overflow-x: hidden;
+  }
+  
+  h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+    transform: translateZ(30px);
+    opacity: 0;
+    animation: fadeInSlashUpTitle 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.2s;
+  }
+  
+  @keyframes fadeInSlashUpTitle {
+    0% {
+      opacity: 0;
+      transform: translateY(40px) translateZ(-80px) rotateZ(-10deg) scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) translateZ(30px) rotateZ(0deg) scale(1);
+    }
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .box-shadow {
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.39, 0.575, 0.565, 1), box-shadow 0.8s cubic-bezier(0.39, 0.575, 0.565, 1);
+    will-change: transform, box-shadow;
+    margin: 25px;
+    width: calc(33.33% - 50px);
+    max-width: 450px;
+  }
+  
+  @media (max-width: 991.98px) {
+    .box-shadow {
+      width: calc(50% - 50px);
+    }
+  }
+  
+  @media (max-width: 767.98px) {
+    .box-shadow {
+      width: calc(100% - 50px);
+    }
+  }
+  
+  .box-shadow:hover {
+    transform: rotateX(15deg) rotateY(25deg) translateZ(50px) scale(1.05) skew(-5deg, 5deg); /* More slashy hover */
+    box-shadow: 25px 30px 60px rgba(0, 0, 0, 0.45);
+  }
+  
+  .card {
+    transform-style: preserve-3d;
+    background-color: rgba(253, 253, 253, 0.98);
+    border-width: 2px;
+    overflow: hidden; /* Clip the slashy border effect */
+    position: relative;
+  }
+  
+  .card::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #00ff00, #ff00ff);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    animation: slashBorder 4s infinite linear;
+  }
+  
+  .card:hover::before {
+    opacity: 1;
+  }
+  
+  @keyframes slashBorder {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+  }
+  
+  .card-header {
+    transform: translateZ(25px);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1.5rem 1.75rem;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.18);
+  }
+  
+  .card-header h6 {
+    margin-bottom: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #222;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-body {
+    transform: translateZ(20px);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .img-fluid {
+    transform: translateZ(35px);
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 8px 12px 30px rgba(0, 0, 0, 0.3);
+    margin-bottom: 2.5rem;
+    transition: transform 0.4s ease-in-out;
+  }
+  
+  .box-shadow:hover .img-fluid {
+    transform: translateZ(40px) scale(1.08) rotateZ(-5deg); /* Slashy image hover */
+  }
+  
+  .btn {
+    transform: translateZ(40px);
+    padding: 1.2rem 2.5rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 8px 12px 25px rgba(0, 123, 255, 0.6);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .btn:hover {
+    transform: translateZ(45px) scale(1.05) rotateZ(5deg); /* Slashy button hover */
+    box-shadow: 10px 15px 30px rgba(0, 123, 255, 0.7);
+  }
+  
+  .list-unstyled {
+    transform: translateZ(30px);
+    margin-top: 2rem;
+    text-align: center;
+  }
+  
+  .list-unstyled li {
+    font-size: 1.2rem;
+    color: #444;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* More pronounced continuous rotation with a slight tilt */
+  @keyframes rotateCardSlash {
+    0% {
+      transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateZ(0);
+    }
+    50% {
+      transform: rotateX(2deg) rotateY(3deg) rotateZ(1deg) translateZ(5px);
+    }
+    100% {
+      transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateZ(0);
+    }
+  }
+  
+  .card {
+    animation: rotateCardSlash 7s ease-in-out infinite alternate;
+  }
+  
+  /* Initial load animation with a stronger "slash" effect */
+  @keyframes fadeInSlashUpHeavy {
+    0% {
+      opacity: 0;
+      transform: translateY(60px) translateZ(-250px) rotateY(-20deg) rotateZ(15deg) scale(0.85);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) translateZ(0) rotateY(0deg) rotateZ(0deg) scale(1);
+    }
+  }
+  
+  .box-shadow {
+    animation: fadeInSlashUpHeavy 0.9s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+    opacity: 0;
+  }
+  
+  /* Stagger the load animation */
+  .row > div:nth-child(1) .box-shadow {
+    animation-delay: 0.3s;
+  }
+  .row > div:nth-child(2) .box-shadow {
+    animation-delay: 0.5s;
+  }
+  .row > div:nth-child(3) .box-shadow {
+    animation-delay: 0.7s;
+  }
+  /* Add more for additional product blocks if needed */

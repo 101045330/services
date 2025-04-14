@@ -1,0 +1,111 @@
+/* Container setup */
+.container-lg {
+  perspective: 1500px;
+  margin-top: 100px;
+  padding: 30px;
+}
+
+/* Row for product detail */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+  animation: fadeInDetail 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+/* Product image styling */
+.img-fluid {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 10px 15px 40px rgba(0, 0, 0, 0.35);
+  transform: translateZ(20px);
+  transition: transform 0.4s ease-in-out;
+}
+
+.img-fluid:hover {
+  transform: scale(1.05) rotateZ(-2deg) translateZ(25px);
+}
+
+/* Text section */
+.col-md-6 h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #222;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  transform: translateZ(30px);
+}
+
+.col-md-6 p {
+  font-size: 1.2rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  transform: translateZ(25px);
+}
+
+/* Button styling consistent with cards */
+.btn {
+  transform: translateZ(35px);
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 10px;
+  background-color: #6c757d;
+  color: #fff;
+  box-shadow: 8px 12px 25px rgba(108, 117, 125, 0.6);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.btn:hover {
+  transform: translateZ(40px) scale(1.04) rotateZ(3deg);
+  box-shadow: 10px 15px 30px rgba(108, 117, 125, 0.8);
+}
+
+/* Empty state */
+.container-lg p {
+  font-size: 1.3rem;
+  color: #666;
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Entry animation for detail */
+@keyframes fadeInDetail {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) translateZ(-200px) rotateY(-10deg) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateZ(0) rotateY(0deg) scale(1);
+  }
+}
+
+/* Responsive layout */
+@media (max-width: 767.98px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .col-md-6 {
+    width: 100%;
+  }
+
+  .col-md-6 h2 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .col-md-6 p {
+    text-align: center;
+  }
+
+  .btn {
+    display: block;
+    margin: 20px auto 0 auto;
+  }
+}
