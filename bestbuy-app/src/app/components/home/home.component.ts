@@ -2,6 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Product } from '../../model/product.model';
 import { ProductService } from '../../services/product.service';
 
+
+
+
+
+
 @Component({
   selector: 'app-home',
   standalone: false,
@@ -16,7 +21,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   appliances: Product[] = [];
 
 
-   
+
   constructor(private productService: ProductService) {
     // Constructor logic here
   }
@@ -28,9 +33,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.appliances = this.productService.mgGetProductsByCategory('Appliances');
 
     //log to test
-      // console.log(this.tvs);
-      // console.log(this.computers);
-      // console.log(this.appliances);
+    // console.log(this.tvs);
+    // console.log(this.computers);
+    // console.log(this.appliances);
   }
 
   ngOnDestroy() {
@@ -39,5 +44,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.computers = [];
     this.appliances = [];
   }
+
+
 
 }
