@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar disco-nav">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Best Bye!</a>
+    <a class="navbar-brand" href="#">Best Bye !</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,12 @@
           </select>
         </li>
       </ul>
+
+      <div class="navbar-brand">Your Logo</div>
       <ul class="navbar-nav main-nav">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/']">Home</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/products']">Products</a>
         </li>
@@ -32,7 +37,27 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/about']">About Us</a>
         </li>
+        <li class="nav-item more-dropdown">
+          <a class="nav-link" href="#" id="moreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            More <i class="bi bi-three-dots"></i>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="moreDropdown">
+            <li><a class="dropdown-item" [routerLink]="['/contact']">Contact</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/blog']">Blog</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/careers']">Careers</a></li>
+          </ul>
+        </li>
       </ul>
+      <div class="breadcrumb-dropdown-container">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="breadcrumbDropdownButton"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          Breadcrumb
+        </button>
+        <ol class="breadcrumb dropdown-menu" aria-labelledby="breadcrumbDropdownButton">
+          <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Current Page</li>
+        </ol>
+      </div>
     </div>
   </div>
 </nav>
