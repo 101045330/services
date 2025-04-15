@@ -3,15 +3,12 @@ import { Product } from '../../model/product.model';
 import { ProductService } from '../../services/product.service';
 
 
-
-
-
-
 @Component({
   selector: 'app-home',
   standalone: false,
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrls: ['./home.component.scss']
+
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
@@ -19,8 +16,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   tvs: Product[] = [];
   computers: Product[] = [];
   appliances: Product[] = [];
-
-
 
   constructor(private productService: ProductService) {
     // Constructor logic here
@@ -45,6 +40,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.appliances = [];
   }
 
-
+  getImageUrl1(category: string): string {
+    const query = encodeURIComponent(category.replace(/[^a-zA-Z ]/g, ''));
+    return `https://loremflickr.com/400/300/${query}?lock=${Math.floor(Math.random() * 1000)}`;
+  }
+  getImageUrl(category: string): string {
+    const seed = category.toLowerCase();
+    return `https://picsum.photos/seed/${seed}/400/300`;
+  }
+  
 
 }

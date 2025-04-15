@@ -9,13 +9,12 @@ import { Router } from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
   constructor(private router: Router) { }
-  ngOnInit(): void { }
 
-  //  Method to handle category change
-  // This method is triggered when the user selects a category from the dropdown
-  // It retrieves the selected category and navigates to the corresponding route
-  // The route is constructed using the selected category value
-  // The method uses optional chaining to handle the case where the select element is null
+  ngOnInit(): void {
+    this.addNavLinkClickListeners();
+  }
+
+  // Method to handle category change
   onCategoryChange(event: Event): void {
     const selectElement = event.target as HTMLSelectElement | null;
     const category = selectElement?.value; // Use optional chaining to handle null
@@ -24,4 +23,22 @@ export class NavigationComponent implements OnInit {
     }
   }
 
+  // Method to get free photo URL
+  getImageUrl(category: string): string {
+    const query = encodeURIComponent(category.replace(/[^a-zA-Z ]/g, ''));
+    return `https://loremflickr.com/400/300/${query}?lock=${Math.floor(Math.random() * 1000)}`;
+  }
+
+  // Method to add click listeners to navigation links
+  private addNavLinkClickListeners(): void {
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e: Event) => {
+        const mouseEvent = e as MouseEvent;
+        const rect = (mouseEvent.target as HTMLElement).getBoundingClientRect();
+        (mouseEvent.target as HTMLElement).style.setProperty('--x', `${mouseEvent.clientX - rect.left}px`);
+        (mouseEvent.target as HTMLElement).style.setProperty('--y', `${mouseEvent.clientY - rect.top}px`);
+      });
+    });
+  }
 }
